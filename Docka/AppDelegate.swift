@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let window:NSWindow = NSApplication.shared().windows[0]
         window.isOpaque = true
         window.backgroundColor = NSColor.clear
-        window.hasShadow = true
+        window.hasShadow = false
         window.canHide = false
         window.level = 1
         window.isMovable = false
