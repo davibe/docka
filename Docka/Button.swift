@@ -31,8 +31,7 @@ class Button: NSButton {
     }
     
     override func mouseDown(with event: NSEvent) {
-        if event.clickCount == 1 { applicationManager.toggleHidden(application: self.application) }
-        if event.clickCount == 2 { applicationManager.showAlone(application: self.application) }
-        
+        if event.clickCount == 1 { ApplicationManager.toggleHidden(application: self.application) }
+        if event.clickCount == 2 { ApplicationManager.showAlone(application: self.application) }
     }
 }

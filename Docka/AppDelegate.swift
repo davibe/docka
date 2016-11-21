@@ -50,7 +50,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.workspaceNotificationLogger(notification:notification)
             }
         ).on()
-
     }
     
     func workspaceNotificationLogger(notification:Notification) {

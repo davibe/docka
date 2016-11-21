@@ -13,7 +13,7 @@ import CoreFoundation
 
 class ApplicationManager {
     
-    func toggleHidden(application:NSRunningApplication) {
+    class func toggleHidden(application:NSRunningApplication) {
         NSRunningApplication.current().activate()
         
         if application.isHidden {
@@ -24,7 +24,7 @@ class ApplicationManager {
         }
     }
     
-    func showAlone(application:NSRunningApplication) {
+    class func showAlone(application:NSRunningApplication) {
         let applications:[NSRunningApplication] = NSWorkspace.shared().runningApplications
         for it:NSRunningApplication in applications {
             if it.bundleIdentifier == application.bundleIdentifier {
@@ -37,6 +37,3 @@ class ApplicationManager {
         }
     }
 }
-
-let applicationManager:ApplicationManager = ApplicationManager()
-
