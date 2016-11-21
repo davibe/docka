@@ -78,10 +78,20 @@ class ViewController: NSViewController {
     }
     
     func applicationShowAlone(application:NSRunningApplication) {
-        NSRunningApplication.current().activate()
-        NSWorkspace.shared().hideOtherApplications()
-        application.activate()
-        application.unhide()
+        // NSWorkspace.shared().hideOtherApplications()
+        let applications:[NSRunningApplication] = NSWorkspace.shared().runningApplications
+        for it:NSRunningApplication in applications {
+            if it.bundleIdentifier == application.bundleIdentifier {
+                application.activate()
+                application.unhide()
+                continue
+            }
+            
+            if !it.isHidden {
+                it.hide()
+            }
+            
+        }
         self.refresh()
     }
 }

@@ -15,19 +15,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let workspaceObserver = WorkspaceObserver()
     
-    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         let window:NSWindow = NSApplication.shared().windows[0]
         window.isOpaque = false
-        window.backgroundColor = NSColor.white.withAlphaComponent(0.2)
-        window.hasShadow = false
+        window.backgroundColor = NSColor.clear
+        window.hasShadow = true
         window.canHide = false
         window.level = 1
         window.isMovable = false
-        
-        
-        
+        window.isMovableByWindowBackground = true
+
+        window.contentView?.wantsLayer = true
+        if let layer = window.contentView?.layer {
+            layer.cornerRadius = 1.0
+            layer.borderColor = NSColor.white.withAlphaComponent(0.5).cgColor
+            layer.borderWidth = 0
+            layer.masksToBounds = true
+            layer.backgroundColor = NSColor.white.withAlphaComponent(0.2).cgColor
+        }
         
         if let screen:NSScreen = NSScreen.main() {
             print(screen.frame)
@@ -36,7 +42,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let rect:CGRect = CGRect(origin: origin, size: size)
             
             window.setFrame(rect, display: true)
-            
         }
         
         let nc = NSWorkspace.shared().notificationCenter

@@ -15,6 +15,8 @@ class Button: NSButton {
         self.init(frame: .zero)
         self.isBordered = false
         self.imageScaling = .scaleProportionallyUpOrDown
+        self.isEnabled = true
+        self.highlight(false)
     }
     
     
