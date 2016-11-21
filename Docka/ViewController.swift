@@ -13,29 +13,24 @@ import Foundation
 class ViewController: NSViewController {
 
     let stackView = StackView()
-    var timer:Timer = Timer()
+    var workspaceObserver:Observer? = nil
     
     override func viewDidLoad() {
-        self.viewCreate()
+        self.view.addSubview(self.stackView)
         self.view.translatesAutoresizingMaskIntoConstraints = false
         super.viewDidLoad()
+        
+        // on every workspace notification (app hide/activate/..) we refresh UI
+        self.workspaceObserver = Observer(
+            nc: NSWorkspace.shared().notificationCenter,
+            name: nil,
+            cb: { notification in self.refresh() }
+        ).on()
     }
     
     override func viewDidAppear() {
         super.viewDidAppear()
         self.refresh()
-        let block:(Timer) -> Void = { timer in self.refresh() }
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: block)
-    }
-    
-    override func viewWillDisappear() {
-        super.viewWillDisappear()
-        self.timer.invalidate()
-    }
-    
-    func viewCreate() {
-        self.view.addSubview(self.stackView)
-        self.view.addSubview(self.stackView)
     }
 
     func refresh() {
@@ -48,51 +43,12 @@ class ViewController: NSViewController {
                 let bundleIndentifier = application.bundleIdentifier,
                 myBundleIdentifier != bundleIndentifier // skip our own application
             {
-                // print(application.localizedName)
                 let icon = Button()
                 icon.application = application
-                icon.onClick = self.onClick
                 self.stackView.addArrangedSubview(icon)
             }
         }
     }
 
-    func onClick(button:Button, right:Bool) {
-        let application = button.application
-        if right {
-            return self.applicationShowAlone(application: application)
-        }
-        self.applicationToggleHidden(application: application)
-    }
-    
-    func applicationToggleHidden(application:NSRunningApplication) {
-        NSRunningApplication.current().activate()
-        
-        if application.isHidden {
-            application.activate()
-            application.unhide()
-        } else {
-            application.hide()
-        }
-        self.refresh()
-    }
-    
-    func applicationShowAlone(application:NSRunningApplication) {
-        // NSWorkspace.shared().hideOtherApplications()
-        let applications:[NSRunningApplication] = NSWorkspace.shared().runningApplications
-        for it:NSRunningApplication in applications {
-            if it.bundleIdentifier == application.bundleIdentifier {
-                application.activate()
-                application.unhide()
-                continue
-            }
-            
-            if !it.isHidden {
-                it.hide()
-            }
-            
-        }
-        self.refresh()
-    }
 }
 

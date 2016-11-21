@@ -10,19 +10,20 @@ import Foundation
 
 class Observer {
     var notificationCenter:NotificationCenter = NotificationCenter()
-    var callback:((NSNotification) -> Void)? = nil
-    var name:NSNotification.Name? = nil
+    var callback:((Notification) -> Void)? = nil
+    var name:Notification.Name? = nil
     var executeOnce = false
     
-    convenience init(nc:NotificationCenter, name:String?, cb:((NSNotification) -> Void)?)
+    convenience init(nc:NotificationCenter?, name:String?, cb:((Notification) -> Void)?)
     {
         self.init()
-        self.notificationCenter = nc
-        if let n = name { self.name = NSNotification.Name(n) }
+        self.notificationCenter = NotificationCenter.default
+        if let n = nc { self.notificationCenter = n }
+        if let n = name { self.name = Notification.Name(n) }
         self.callback = cb
     }
     
-    func on()
+    func on() -> Observer
     {
         self.notificationCenter.addObserver(
             self,
@@ -30,20 +31,22 @@ class Observer {
             name: self.name,
             object: nil
         )
+        return self
     }
     
-    func once()
+    func once() -> Observer
     {
         self.executeOnce = true
-        self.on()
+        return self.on()
     }
     
-    func off()
+    func off() -> Observer
     {
         self.notificationCenter.removeObserver(self)
+        return self
     }
     
-    @objc func observe(notification: NSNotification)
+    @objc func observe(notification: Notification)
     {
         if self.executeOnce {
             self.off()

@@ -19,7 +19,6 @@ class Button: NSButton {
         self.highlight(false)
     }
     
-    
     var application:NSRunningApplication = NSRunningApplication.current() {
         didSet {
             self.image = application.icon
@@ -31,17 +30,9 @@ class Button: NSButton {
         }
     }
     
-    var onClick:(Button, Bool) -> Void = {button, right in }
-    
     override func mouseDown(with event: NSEvent) {
-        let right:Bool = event.buttonNumber == 1
-        self.onClick(self, right)
+        if event.clickCount == 1 { applicationManager.toggleHidden(application: self.application) }
+        if event.clickCount == 2 { applicationManager.showAlone(application: self.application) }
+        
     }
-    
-    override func rightMouseDown(with event: NSEvent) {
-        let right:Bool = event.buttonNumber == 1
-        self.onClick(self, right)
-    }
-    
-    
 }
