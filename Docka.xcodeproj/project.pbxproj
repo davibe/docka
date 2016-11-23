@@ -17,6 +17,7 @@
 		0DC666971DE0F0A6004B6019 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC666961DE0F0A6004B6019 /* StackView.swift */; };
 		0DC666991DE0F972004B6019 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC666981DE0F972004B6019 /* Button.swift */; };
 		0DC6669F1DE2C889004B6019 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC6669E1DE2C889004B6019 /* Observer.swift */; };
+		0DCD050F1DE5894F00ADA679 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 0DCD050E1DE5894F00ADA679 /* README.md */; };
 		267BB204446FB94507E69077 /* Pods_DockaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5281EBD1041B2CA4A2D75E2F /* Pods_DockaTests.framework */; };
 		58D7621C9D2972B6FC6E7C5E /* Pods_DockaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 422CE054564841E4A35A5C6D /* Pods_DockaUITests.framework */; };
 		7DFE8F8451701F24204185D4 /* Pods_Docka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E05594C288D2A71BBBAA17 /* Pods_Docka.framework */; };
@@ -56,6 +57,7 @@
 		0DC666961DE0F0A6004B6019 /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		0DC666981DE0F972004B6019 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		0DC6669E1DE2C889004B6019 /* Observer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		0DCD050E1DE5894F00ADA679 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		10ADCE486256FAE22E52BDF5 /* Pods-DockaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DockaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DockaTests/Pods-DockaTests.release.xcconfig"; sourceTree = "<group>"; };
 		37C8694F121F3BAD02E5969A /* Pods-DockaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DockaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DockaUITests/Pods-DockaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		422CE054564841E4A35A5C6D /* Pods_DockaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DockaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +100,7 @@
 		0DC6665F1DE0DD76004B6019 = {
 			isa = PBXGroup;
 			children = (
+				0DCD050E1DE5894F00ADA679 /* README.md */,
 				0DC6666A1DE0DD77004B6019 /* Docka */,
 				0DC6667C1DE0DD77004B6019 /* DockaTests */,
 				0DC666871DE0DD77004B6019 /* DockaUITests */,
@@ -457,6 +460,7 @@
 				0DC6666E1DE0DD77004B6019 /* ViewController.swift in Sources */,
 				0D0212C91DE396BE007021C2 /* ApplicationManager.swift in Sources */,
 				0DC666971DE0F0A6004B6019 /* StackView.swift in Sources */,
+				0DCD050F1DE5894F00ADA679 /* README.md in Sources */,
 				0DC6666C1DE0DD77004B6019 /* AppDelegate.swift in Sources */,
 				0DC6669F1DE2C889004B6019 /* Observer.swift in Sources */,
 				0DC666991DE0F972004B6019 /* Button.swift in Sources */,

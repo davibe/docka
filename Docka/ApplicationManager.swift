@@ -33,6 +33,7 @@ class ApplicationManager {
     }
     
     class func toggleHidden(application:NSRunningApplication) {
+        
         if
             application == applicationLast,
             !application.isHidden
@@ -41,7 +42,12 @@ class ApplicationManager {
             application.hide()
         } else {
             application.unhide()
-            application.activate()
+            //application.activate()
+            
+            application.activate(options: [
+                NSApplicationActivationOptions.activateAllWindows,
+                NSApplicationActivationOptions.activateIgnoringOtherApps
+            ])
         }
     }
     
