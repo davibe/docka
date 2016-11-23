@@ -15,8 +15,11 @@ A proof-of-concept OSX Dock alternative or completentary utility written in Swif
 
 ### Usage
 
-- click on an application icon: show/hide application (icon dims)
-- double click on an icon: show application and hide all others
+- click on an application icon:
+  - show and activate that application
+  - if application is frontmost and visible then hidden it
+- double click: show application and hide all others
+- (experimental) triple click: fits application window to screen with some margin
 
 ### Why: It's difficult to explain it properly, but
 
