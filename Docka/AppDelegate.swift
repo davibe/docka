@@ -17,7 +17,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var refreshObserver:Observer? = nil
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let window:NSWindow = NSApplication.shared().windows[0]
+        let app:NSApplication = NSApplication.shared()
+        app.setActivationPolicy(.accessory)
+        
+        let window:NSWindow = app.windows[0]
         window.isOpaque = true
         window.backgroundColor = NSColor.clear
         window.hasShadow = false
@@ -25,7 +28,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.level = 1
         window.isMovable = false
         window.isMovableByWindowBackground = false
-        
         window.contentView?.wantsLayer = true
         
         if let layer = window.contentView?.layer {
@@ -34,6 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             layer.masksToBounds = true
             layer.backgroundColor = NSColor.white.withAlphaComponent(0.1).cgColor
         }
+        
+        ApplicationManager.applicationLastRegister()
         
         if let screen:NSScreen = NSScreen.main() {
             let size:CGSize = CGSize(width: window.frame.width, height: 30)
