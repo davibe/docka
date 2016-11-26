@@ -11,12 +11,21 @@ import Cocoa
 
 class Button: NSButton {
     
+    let buttonIndexView:ButtonIndexView = ButtonIndexView()
+    var index:Int = 0 {
+        didSet {
+            self.buttonIndexView.setText(text: "\(index)")
+        }
+    }
+    
     convenience init() {
         self.init(frame: .zero)
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.isBordered = false
         self.imageScaling = .scaleProportionallyUpOrDown
         self.isEnabled = true
         self.highlight(false)
+        self.addSubview(self.buttonIndexView)
     }
     
     var application:NSRunningApplication = NSRunningApplication.current {
