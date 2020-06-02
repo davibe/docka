@@ -44,7 +44,7 @@ class ButtonIndexView: NSTextView {
     func setText(text:String) {
         self.insertText(
             text,
-            replacementRange: NSRangeFromString(self.string!)
+            replacementRange: NSRangeFromString(self.string)
         )
     }
 }
