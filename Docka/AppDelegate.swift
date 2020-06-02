@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var refreshObserver:Observer? = nil
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let app:NSApplication = NSApplication.shared()
+        let app:NSApplication = NSApplication.shared
         app.setActivationPolicy(.accessory)
         
         let window:NSWindow = app.windows[0]
@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.backgroundColor = NSColor.clear
         window.hasShadow = false
         window.canHide = false
-        window.level = 1
+        window.level = NSWindow.Level(rawValue: 1)
         window.isMovable = false
         window.isMovableByWindowBackground = false
         window.contentView?.wantsLayer = true
@@ -39,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         ApplicationManager.applicationLastRegister()
         
-        if let screen:NSScreen = NSScreen.main() {
+        if let screen:NSScreen = NSScreen.main {
             let size:CGSize = CGSize(width: window.frame.width, height: 30)
             let origin:CGPoint = CGPoint(x: screen.frame.origin.x, y: screen.frame.origin.x)
             let rect:CGRect = CGRect(origin: origin, size: size)
@@ -48,7 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         self.workspaceObserver = Observer(
-            nc: NSWorkspace.shared().notificationCenter,
+            nc: NSWorkspace.shared.notificationCenter,
             name: nil,
             cb: { notification in
                 self.workspaceNotificationLogger(notification:notification)

@@ -18,14 +18,15 @@ class ApplicationManager {
     static var applicationLastObserver:Observer = Observer()
     
     class func applicationLastRegister() {
+        
         applicationLastObserver = Observer(
-            nc: NSWorkspace.shared().notificationCenter,
+            nc: NSWorkspace.shared.notificationCenter,
             name: "NSWorkspaceDidActivateApplicationNotification",
             cb: { (notification) in
                 if
                     let userInfo = notification.userInfo,
                     let application = userInfo["NSWorkspaceApplicationKey"] as? NSRunningApplication,
-                    application != NSRunningApplication.current()
+                    application != NSRunningApplication.current
                 {
                     applicationLast = application
                 }
@@ -45,14 +46,15 @@ class ApplicationManager {
             //application.activate()
             
             application.activate(options: [
-                NSApplicationActivationOptions.activateAllWindows,
-                NSApplicationActivationOptions.activateIgnoringOtherApps
+                NSApplication.ActivationOptions.activateAllWindows,
+                NSApplication.ActivationOptions.activateIgnoringOtherApps
             ])
         }
     }
     
     class func showAlone(application:NSRunningApplication) {
-        let applications:[NSRunningApplication] = NSWorkspace.shared().runningApplications
+        
+        let applications:[NSRunningApplication] = NSWorkspace.shared.runningApplications
         for it:NSRunningApplication in applications {
             if it.bundleIdentifier == application.bundleIdentifier {
                 application.unhide()
@@ -69,11 +71,14 @@ class ApplicationManager {
         // attempt to refit the application windows (experimental)
         
         let siApplication:SIApplication = SIApplication(runningApplication: application)
-        if let windows:[SIWindow] = siApplication.windows() as! [SIWindow]? {
+        if let windows:[SIWindow] = siApplication.windows() as! [SIWindow] {
             for window in windows {
-                if window.isNormalWindow() {
+                if
+                    window.isNormalWindow(),
+                    let screen = window.screen()
+                {
                     window.setFrame(
-                        window.screen().frame.insetBy(dx: 60, dy: 60)
+                        screen.frame.insetBy(dx: 60, dy: 60)
                     )
                 }
             }

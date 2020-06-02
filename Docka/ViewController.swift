@@ -9,6 +9,7 @@
 import Cocoa
 import CoreFoundation
 import Foundation
+import Silica
 
 class ViewController: NSViewController {
 
@@ -22,7 +23,7 @@ class ViewController: NSViewController {
         
         // on every workspace notification (app hide/activate/..) we refresh UI
         self.workspaceObserver = Observer(
-            nc: NSWorkspace.shared().notificationCenter,
+            nc: NSWorkspace.shared.notificationCenter,
             name: nil,
             cb: { notification in self.refresh() }
         ).on()
@@ -35,11 +36,13 @@ class ViewController: NSViewController {
 
     func refresh() {
         for subview in self.stackView.subviews { subview.removeFromSuperview() }
-        let applications:[NSRunningApplication] = NSWorkspace.shared().runningApplications
+        let applications:[NSRunningApplication] = NSWorkspace.shared.runningApplications
         for application:NSRunningApplication in applications {
+            
+            
             if
                 application.activationPolicy == .regular, // regular means it has UI
-                let myBundleIdentifier = NSRunningApplication.current().bundleIdentifier,
+                let myBundleIdentifier = NSRunningApplication.current.bundleIdentifier,
                 let bundleIndentifier = application.bundleIdentifier,
                 myBundleIdentifier != bundleIndentifier // skip our own application
             {

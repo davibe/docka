@@ -19,7 +19,7 @@ class Button: NSButton {
         self.highlight(false)
     }
     
-    var application:NSRunningApplication = NSRunningApplication.current() {
+    var application:NSRunningApplication = NSRunningApplication.current {
         didSet {
             self.image = application.icon
             if application.isHidden {
