@@ -24,6 +24,7 @@ Note: hiding a window currently means moving it "offscreen" because osx has no c
 ### next ?
 
 Not sure
+- automatically shrink the dock width when there are fewer icons, or figure out a different layout
 - I would like to simulate groups of hidden/show windows as if they were different spaces you can switch to
 - I would like to create a cmd+tab alternative that is window based (and only shows the windows of the current space)
 
