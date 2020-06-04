@@ -10,79 +10,193 @@ import Foundation
 import Cocoa
 import CoreFoundation
 import Silica
+import CoreGraphics
+
+import StreamSwift
+typealias Stream = StreamSwift.Stream
+
+
+struct Win: Equatable {
+    let key: String
+    let debug: String
+    let application: NSRunningApplication
+    let siWindow: SIWindow
+    
+    func visible() -> Bool {
+        
+        guard let screen = siWindow.screen() else { return false }
+        return NSScreen.screens.firstIndex(of: screen) == 0
+    }
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.key == rhs.key
+    }
+}
+
+
+struct AppState: Equatable {
+    var windows: [Win] = []
+    var hiddenWindowKeys: [String] = []
+    var rectCache: [String: CGRect] = [:]
+    var windowLastFocused: SIWindow? = nil
+}
+
+
+protocol Action { }
+
+struct WinTap: Action {
+    let win: Win
+}
+
+struct WinTapSecondary: Action {
+    let win: Win
+}
+
 
 class ApplicationManager {
     
-    // We keep an updated reference of the last activated application before our own
-    static var applicationLast:NSRunningApplication? = nil
-    static var applicationLastObserver:Observer = Observer()
+    var stateStream = Stream<AppState>().trigger(AppState())
     
-    class func applicationLastRegister() {
-        
+    private var state: AppState = AppState() {
+        didSet { // this bridges shared mutable state to a reactive approach
+            if (oldValue != state) {
+                stateStream.trigger(state)
+            }
+        }
+    }
+    
+    private var applicationLastObserver: Observer = Observer()
+    
+    func setup() {
+
         applicationLastObserver = Observer(
             nc: NSWorkspace.shared.notificationCenter,
             name: "NSWorkspaceDidActivateApplicationNotification",
-            cb: { (notification) in
+            cb: { [weak self] (notification) in
                 if
                     let userInfo = notification.userInfo,
-                    let application = userInfo["NSWorkspaceApplicationKey"] as? NSRunningApplication,
-                    application != NSRunningApplication.current
+                    let application = userInfo["NSWorkspaceApplicationKey"] as? NSRunningApplication
+                    //application != NSRunningApplication.current
                 {
-                    applicationLast = application
+                    self?.indexWindows()
                 }
         }).on()
+        
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { [weak self] _ in self?.indexWindows() })
     }
     
-    class func toggleHidden(application:NSRunningApplication) {
+    private func indexWindows() {
+        guard let siWindows = SIWindow.allWindows() else { return }
+        let windows = siWindows.compactMap { (window) -> Win? in
+            guard
+                let processIdentifier = window.app()?.processIdentifier(),
+                let appTitle = window.app()?.title(),
+                let windowTitle = window.title(),
+                let pid = window.app()?.processIdentifier(),
+                let nsapp = NSRunningApplication.init(processIdentifier: pid),
+                // some exceptions
+                !windowTitle.isEmpty, // <- android emulator ghost window
+                windowTitle != "Microsoft Teams Notification"
+                else { return nil }
+            let windowId = window.windowID()
+            
+            let key = "\(processIdentifier):\(windowId)"
+            let debug = "\(key):\(appTitle):\(windowTitle)"
+            return Win(
+                key: key,
+                debug: debug,
+                application: nsapp,
+                siWindow: window
+            )
+        }.sorted(by: { (a, b) -> Bool in
+            return a.key.compare(b.key).rawValue < 0
+        }).compactMap({ $0 })
         
-        if
-            application == applicationLast,
-            !application.isHidden
-        {
-            // we are clicking the frontmost and visible application to hide it
-            application.hide()
+        state.windows = windows
+        state.hiddenWindowKeys = windows.filter { ApplicationManager.isHidden(w: $0) }.map { $0.key }
+        
+        if let focusedWindow = SIWindow.focused() {
+            state.windowLastFocused = focusedWindow
+        }
+    }
+    
+    func dispatch(action: Action) {
+        switch action {
+        case let tap as WinTap:
+            let win = tap.win
+            toggleHidden(win: win)
+            break
+        case let tap as WinTapSecondary:
+            let win = tap.win
+            if ApplicationManager.isHidden(w: win) {
+                toggleHidden(win: win)
+            }
+            hideOthers(win: win)
+            break
+        default:
+            break
+        }
+        indexWindows()
+    }
+    
+    class func isHidden(w: Win) -> Bool {
+        guard let screenFrame = NSScreen.screens.first?.frame else { return false }
+        return screenFrame.width - 100 < w.siWindow.frame().origin.x
+    }
+    
+    // utils
+    
+    private func hide(win: Win) {
+        let windowFrame = win.siWindow.frame()
+        state.rectCache[win.key] = windowFrame
+        guard let screenFrame = NSScreen.screens.first?.frame else { return }
+        win.siWindow.setPosition(CGPoint(x: screenFrame.width * 2, y: windowFrame.origin.y))
+    }
+    
+    private func unhide(win: Win) {
+        guard let screenFrame = win.siWindow.screen()?.frame else { return }
+        let windowFrame = win.siWindow.frame()
+        let rect = state.rectCache[win.key] ?? CGRect(
+            origin: CGPoint(
+                x: (screenFrame.size.width - windowFrame.size.width) / 2,
+                y: (screenFrame.size.height - windowFrame.size.height) / 2
+            ),
+            size: windowFrame.size
+        )
+        state.rectCache.removeValue(forKey: win.key)
+        win.siWindow.setFrame(rect)
+        focus(win: win)
+    }
+    
+    private func focus(win: Win) {
+        // only bring forward this specific window
+        AXUIElementSetAttributeValue(win.siWindow.axElementRef, NSAccessibility.Attribute.main as CFString, kCFBooleanTrue)
+        win.application.activate(options: .activateIgnoringOtherApps)
+    }
+    
+    private func toggleHidden(win: Win) {
+        let focused = state.windowLastFocused == win.siWindow
+        
+        if ApplicationManager.isHidden(w: win) {
+            unhide(win: win)
+            return
+        }
+        
+        if (!focused) {
+            focus(win: win)
         } else {
-            application.unhide()
-            //application.activate()
-            
-            application.activate(options: [
-                NSApplication.ActivationOptions.activateAllWindows,
-                NSApplication.ActivationOptions.activateIgnoringOtherApps
-            ])
+            // hide
+            hide(win: win)
         }
     }
     
-    class func showAlone(application:NSRunningApplication) {
-        
-        let applications:[NSRunningApplication] = NSWorkspace.shared.runningApplications
-        for it:NSRunningApplication in applications {
-            if it.bundleIdentifier == application.bundleIdentifier {
-                application.unhide()
-                application.activate()
-        
-                continue
+    private func hideOthers(win: Win) {
+        state.windows.forEach { (it) in
+            if it == win { return }
+            if !ApplicationManager.isHidden(w: it) {
+                hide(win: it)
             }
-            
-            if !it.isHidden { it.hide() }
         }
     }
     
-    class func windowsRefit(application:NSRunningApplication) {
-        // attempt to refit the application windows (experimental)
-        
-        let siApplication:SIApplication = SIApplication(runningApplication: application)
-        if let windows:[SIWindow] = siApplication.windows() as! [SIWindow] {
-            for window in windows {
-                if
-                    window.isNormalWindow(),
-                    let screen = window.screen()
-                {
-                    window.setFrame(
-                        screen.frame.insetBy(dx: 60, dy: 60)
-                    )
-                }
-            }
-        }
-        
-    }
 }

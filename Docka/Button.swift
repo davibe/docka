@@ -7,7 +7,10 @@
 //
 
 import Foundation
+import Carbon
 import Cocoa
+import Silica
+import StreamSwift
 
 class Button: NSButton {
     
@@ -17,6 +20,7 @@ class Button: NSButton {
             self.buttonIndexView.setText(text: "\(index)")
         }
     }
+    
     
     convenience init() {
         self.init(frame: .zero)
@@ -28,20 +32,40 @@ class Button: NSButton {
         self.addSubview(self.buttonIndexView)
     }
     
-    var application:NSRunningApplication = NSRunningApplication.current {
-        didSet {
-            self.image = application.icon
-            if application.isHidden {
-                self.alphaValue = 0.3
-            } else {
-                self.alphaValue = 1.0
+    // state, dispatch
+    
+    var disposables = Array<Disposable>()
+    let mouseDown = Stream<NSEvent>(memory: false)
+    
+    func bindTo(
+        stream: Stream<AppState>,
+        dispatch: @escaping (_ action: Action) -> Void,
+        win: Win
+    ) {
+        self.image = win.application.icon
+        
+        disposables += [
+            mouseDown,
+            stream.map { $0.hiddenWindowKeys }.distinct({ $0 }).subscribe { hiddenWinKeys in
+                let hidden = hiddenWinKeys.contains(win.key)
+                if hidden {
+                    self.alphaValue = 0.3
+                } else {
+                    self.alphaValue = 1.0
+                }
+            },
+            mouseDown.subscribe(replay: false) { event in
+                let optionKeyDown = NSEvent.modifierFlags.contains(NSEvent.ModifierFlags.option)
+                if optionKeyDown {
+                    dispatch(WinTapSecondary(win: win))
+                } else {
+                    dispatch(WinTap(win: win))
+                }
             }
-        }
+        ]
     }
     
     override func mouseDown(with event: NSEvent) {
-        if event.clickCount == 1 { ApplicationManager.toggleHidden(application: self.application) }
-        if event.clickCount == 2 { ApplicationManager.showAlone(application: self.application) }
-        if event.clickCount == 3 { ApplicationManager.windowsRefit(application: self.application) }
+        mouseDown.trigger(event)
     }
 }

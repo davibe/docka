@@ -13,8 +13,7 @@ import CoreVideo
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    var workspaceObserver:Observer? = nil
-    var refreshObserver:Observer? = nil
+    let applicationManager = ApplicationManager()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let app:NSApplication = NSApplication.shared
@@ -37,35 +36,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             layer.backgroundColor = NSColor.white.withAlphaComponent(0.1).cgColor
         }
         
-        ApplicationManager.applicationLastRegister()
-        
         if let screen:NSScreen = NSScreen.main {
-            let size:CGSize = CGSize(width: window.frame.width, height: 30)
-            let origin:CGPoint = CGPoint(x: screen.frame.origin.x, y: screen.frame.origin.x)
-            let rect:CGRect = CGRect(origin: origin, size: size)
+            let size: CGSize = CGSize(width: window.frame.width, height: 30)
+            let origin: CGPoint = CGPoint(x: screen.frame.origin.x, y: screen.frame.origin.x)
+            let rect: CGRect = CGRect(origin: origin, size: size)
             
             window.setFrame(rect, display: true)
         }
         
-        self.workspaceObserver = Observer(
-            nc: NSWorkspace.shared.notificationCenter,
-            name: nil,
-            cb: { notification in
-                self.workspaceNotificationLogger(notification:notification)
-            }
-        ).on()
+        applicationManager.setup()
+        let vc = window.contentViewController as! ViewController
+        vc.bindTo(stream: applicationManager.stateStream, dispatch: applicationManager.dispatch(action:))
     }
     
-    func workspaceNotificationLogger(notification:Notification) {
-        var applicationName:String = ""
-        if let userInfo = notification.userInfo,
-            let application:NSRunningApplication = userInfo["NSWorkspaceApplicationKey"] as? NSRunningApplication,
-            let name = application.localizedName {
-            applicationName = name
-            
-        }
-        print(applicationName, notification.name.rawValue)
-    }
-
 }
 

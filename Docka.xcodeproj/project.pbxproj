@@ -19,9 +19,9 @@
 		0DC666991DE0F972004B6019 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC666981DE0F972004B6019 /* Button.swift */; };
 		0DC6669F1DE2C889004B6019 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC6669E1DE2C889004B6019 /* Observer.swift */; };
 		0DCD050F1DE5894F00ADA679 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 0DCD050E1DE5894F00ADA679 /* README.md */; };
-		267BB204446FB94507E69077 /* Pods_DockaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5281EBD1041B2CA4A2D75E2F /* Pods_DockaTests.framework */; };
-		58D7621C9D2972B6FC6E7C5E /* Pods_DockaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 422CE054564841E4A35A5C6D /* Pods_DockaUITests.framework */; };
-		7DFE8F8451701F24204185D4 /* Pods_Docka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E05594C288D2A71BBBAA17 /* Pods_Docka.framework */; };
+		10935DE3F3B90D3AABF0E769 /* Pods_DockaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F20ED2E7C2ECF830058E875 /* Pods_DockaUITests.framework */; };
+		C169C537997906682724DE48 /* Pods_DockaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E080FD277E0A688FAFC2684F /* Pods_DockaTests.framework */; };
+		D7DA5D8CDD33787F2F185CD4 /* Pods_Docka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDB481CA7C4A3C7416EE09C /* Pods_Docka.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		064556D6B3FEEF22CF212D79 /* Pods-DockaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DockaUITests.release.xcconfig"; path = "Target Support Files/Pods-DockaUITests/Pods-DockaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		0D0212C81DE396BE007021C2 /* ApplicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
+		0D125DB90DE0A7E6BAC0EFF1 /* Pods-Docka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Docka.debug.xcconfig"; path = "Target Support Files/Pods-Docka/Pods-Docka.debug.xcconfig"; sourceTree = "<group>"; };
 		0D63D1DF1DE9824800B78563 /* ButtonIndexView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonIndexView.swift; sourceTree = "<group>"; };
 		0DC666681DE0DD77004B6019 /* Docka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Docka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DC6666B1DE0DD77004B6019 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,15 +62,13 @@
 		0DC666981DE0F972004B6019 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		0DC6669E1DE2C889004B6019 /* Observer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		0DCD050E1DE5894F00ADA679 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		10ADCE486256FAE22E52BDF5 /* Pods-DockaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DockaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DockaTests/Pods-DockaTests.release.xcconfig"; sourceTree = "<group>"; };
-		37C8694F121F3BAD02E5969A /* Pods-DockaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DockaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DockaUITests/Pods-DockaUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		422CE054564841E4A35A5C6D /* Pods_DockaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DockaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		48E05594C288D2A71BBBAA17 /* Pods_Docka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Docka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5281EBD1041B2CA4A2D75E2F /* Pods_DockaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DockaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6358BFD4EB28E61003E2E5BC /* Pods-Docka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Docka.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Docka/Pods-Docka.debug.xcconfig"; sourceTree = "<group>"; };
-		753BDEF4C2F007014557C69E /* Pods-DockaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DockaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DockaTests/Pods-DockaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		867B23C2B26B4CC7890C96CA /* Pods-DockaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DockaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DockaUITests/Pods-DockaUITests.release.xcconfig"; sourceTree = "<group>"; };
-		D695DC2839A41AFB14B605F5 /* Pods-Docka.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Docka.release.xcconfig"; path = "Pods/Target Support Files/Pods-Docka/Pods-Docka.release.xcconfig"; sourceTree = "<group>"; };
+		59BC60FC3F0F2FD7871D28DD /* Pods-DockaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DockaUITests.debug.xcconfig"; path = "Target Support Files/Pods-DockaUITests/Pods-DockaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5F20ED2E7C2ECF830058E875 /* Pods_DockaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DockaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FDB481CA7C4A3C7416EE09C /* Pods_Docka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Docka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63998B9E44ABC3A2E53C7015 /* Pods-DockaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DockaTests.debug.xcconfig"; path = "Target Support Files/Pods-DockaTests/Pods-DockaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AC2C6927F218113F2A39B6BB /* Pods-DockaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DockaTests.release.xcconfig"; path = "Target Support Files/Pods-DockaTests/Pods-DockaTests.release.xcconfig"; sourceTree = "<group>"; };
+		C2A7BF483E33A68D2CE9C358 /* Pods-Docka.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Docka.release.xcconfig"; path = "Target Support Files/Pods-Docka/Pods-Docka.release.xcconfig"; sourceTree = "<group>"; };
+		E080FD277E0A688FAFC2684F /* Pods_DockaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DockaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DFE8F8451701F24204185D4 /* Pods_Docka.framework in Frameworks */,
+				D7DA5D8CDD33787F2F185CD4 /* Pods_Docka.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				267BB204446FB94507E69077 /* Pods_DockaTests.framework in Frameworks */,
+				C169C537997906682724DE48 /* Pods_DockaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58D7621C9D2972B6FC6E7C5E /* Pods_DockaUITests.framework in Frameworks */,
+				10935DE3F3B90D3AABF0E769 /* Pods_DockaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,8 +107,8 @@
 				0DC6667C1DE0DD77004B6019 /* DockaTests */,
 				0DC666871DE0DD77004B6019 /* DockaUITests */,
 				0DC666691DE0DD77004B6019 /* Products */,
-				6CE7114D2C621E83750C02CA /* Pods */,
-				DECD97C40F60561CDBE43309 /* Frameworks */,
+				917B3E2F5A4F5388C877696C /* Pods */,
+				FD4599A58113C439F1343B35 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,25 +157,26 @@
 			path = DockaUITests;
 			sourceTree = "<group>";
 		};
-		6CE7114D2C621E83750C02CA /* Pods */ = {
+		917B3E2F5A4F5388C877696C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6358BFD4EB28E61003E2E5BC /* Pods-Docka.debug.xcconfig */,
-				D695DC2839A41AFB14B605F5 /* Pods-Docka.release.xcconfig */,
-				753BDEF4C2F007014557C69E /* Pods-DockaTests.debug.xcconfig */,
-				10ADCE486256FAE22E52BDF5 /* Pods-DockaTests.release.xcconfig */,
-				37C8694F121F3BAD02E5969A /* Pods-DockaUITests.debug.xcconfig */,
-				867B23C2B26B4CC7890C96CA /* Pods-DockaUITests.release.xcconfig */,
+				0D125DB90DE0A7E6BAC0EFF1 /* Pods-Docka.debug.xcconfig */,
+				C2A7BF483E33A68D2CE9C358 /* Pods-Docka.release.xcconfig */,
+				63998B9E44ABC3A2E53C7015 /* Pods-DockaTests.debug.xcconfig */,
+				AC2C6927F218113F2A39B6BB /* Pods-DockaTests.release.xcconfig */,
+				59BC60FC3F0F2FD7871D28DD /* Pods-DockaUITests.debug.xcconfig */,
+				064556D6B3FEEF22CF212D79 /* Pods-DockaUITests.release.xcconfig */,
 			);
 			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
-		DECD97C40F60561CDBE43309 /* Frameworks */ = {
+		FD4599A58113C439F1343B35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				48E05594C288D2A71BBBAA17 /* Pods_Docka.framework */,
-				5281EBD1041B2CA4A2D75E2F /* Pods_DockaTests.framework */,
-				422CE054564841E4A35A5C6D /* Pods_DockaUITests.framework */,
+				5FDB481CA7C4A3C7416EE09C /* Pods_Docka.framework */,
+				E080FD277E0A688FAFC2684F /* Pods_DockaTests.framework */,
+				5F20ED2E7C2ECF830058E875 /* Pods_DockaUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -187,11 +188,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0DC6668D1DE0DD77004B6019 /* Build configuration list for PBXNativeTarget "Docka" */;
 			buildPhases = (
-				57976A508DECE7C70EE1ECB0 /* [CP] Check Pods Manifest.lock */,
+				306B61B184F44DD843230BE4 /* [CP] Check Pods Manifest.lock */,
 				0DC666641DE0DD76004B6019 /* Sources */,
 				0DC666651DE0DD76004B6019 /* Frameworks */,
 				0DC666661DE0DD76004B6019 /* Resources */,
-				A5DF50CF03ACE4EFC4B87323 /* [CP] Embed Pods Frameworks */,
+				CFFDEEC8F6F33D7CDEADAA85 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -206,7 +207,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0DC666901DE0DD77004B6019 /* Build configuration list for PBXNativeTarget "DockaTests" */;
 			buildPhases = (
-				F2FFA5361974BB86E60741CA /* [CP] Check Pods Manifest.lock */,
+				8D49FF3A37E8CB9965821C11 /* [CP] Check Pods Manifest.lock */,
 				0DC666751DE0DD77004B6019 /* Sources */,
 				0DC666761DE0DD77004B6019 /* Frameworks */,
 				0DC666771DE0DD77004B6019 /* Resources */,
@@ -225,7 +226,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0DC666931DE0DD77004B6019 /* Build configuration list for PBXNativeTarget "DockaUITests" */;
 			buildPhases = (
-				72E08149107E31067AD29B33 /* [CP] Check Pods Manifest.lock */,
+				8D0A6B45E3B521DAF2F44D7A /* [CP] Check Pods Manifest.lock */,
 				0DC666801DE0DD77004B6019 /* Sources */,
 				0DC666811DE0DD77004B6019 /* Frameworks */,
 				0DC666821DE0DD77004B6019 /* Resources */,
@@ -314,16 +315,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		57976A508DECE7C70EE1ECB0 /* [CP] Check Pods Manifest.lock */ = {
+		306B61B184F44DD843230BE4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Docka-checkManifestLockResult.txt",
 			);
@@ -332,16 +337,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		72E08149107E31067AD29B33 /* [CP] Check Pods Manifest.lock */ = {
+		8D0A6B45E3B521DAF2F44D7A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-DockaUITests-checkManifestLockResult.txt",
 			);
@@ -350,7 +359,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A5DF50CF03ACE4EFC4B87323 /* [CP] Embed Pods Frameworks */ = {
+		8D49FF3A37E8CB9965821C11 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DockaTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFFDEEC8F6F33D7CDEADAA85 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -358,34 +389,16 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Docka/Pods-Docka-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Silica/Silica.framework",
-				"${BUILT_PRODUCTS_DIR}/libextobjc/libextobjc.framework",
+				"${BUILT_PRODUCTS_DIR}/StreamSwift/StreamSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Silica.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libextobjc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StreamSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Docka/Pods-Docka-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F2FFA5361974BB86E60741CA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DockaTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -541,7 +554,7 @@
 		};
 		0DC6668E1DE0DD77004B6019 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6358BFD4EB28E61003E2E5BC /* Pods-Docka.debug.xcconfig */;
+			baseConfigurationReference = 0D125DB90DE0A7E6BAC0EFF1 /* Pods-Docka.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -555,7 +568,7 @@
 		};
 		0DC6668F1DE0DD77004B6019 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D695DC2839A41AFB14B605F5 /* Pods-Docka.release.xcconfig */;
+			baseConfigurationReference = C2A7BF483E33A68D2CE9C358 /* Pods-Docka.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -569,7 +582,7 @@
 		};
 		0DC666911DE0DD77004B6019 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 753BDEF4C2F007014557C69E /* Pods-DockaTests.debug.xcconfig */;
+			baseConfigurationReference = 63998B9E44ABC3A2E53C7015 /* Pods-DockaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -585,7 +598,7 @@
 		};
 		0DC666921DE0DD77004B6019 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 10ADCE486256FAE22E52BDF5 /* Pods-DockaTests.release.xcconfig */;
+			baseConfigurationReference = AC2C6927F218113F2A39B6BB /* Pods-DockaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -601,7 +614,7 @@
 		};
 		0DC666941DE0DD77004B6019 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37C8694F121F3BAD02E5969A /* Pods-DockaUITests.debug.xcconfig */;
+			baseConfigurationReference = 59BC60FC3F0F2FD7871D28DD /* Pods-DockaUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -616,7 +629,7 @@
 		};
 		0DC666951DE0DD77004B6019 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 867B23C2B26B4CC7890C96CA /* Pods-DockaUITests.release.xcconfig */;
+			baseConfigurationReference = 064556D6B3FEEF22CF212D79 /* Pods-DockaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
