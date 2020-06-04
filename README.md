@@ -9,27 +9,25 @@ A proof-of-concept OSX Dock alternative or completentary utility written in Swif
 - small panel with open application icons
 - positioned at the bottom of the screen just like Dock (I suggest to autohide the Dock or to move it to a side)
 - always on top (above other windows)
-- resizable
 - visible on all spaces
-- fast and low overhead
+- only lists window of the current space
 
 ### Usage
 
-- click on an application icon:
-  - show and activate that application
-  - if application is frontmost and visible then hidden it
-- double click: show application and hide all others
-- (experimental) triple click: fits application window to screen with some margin
+- click on an window icon:
+  - brings the window to front (not the application)
+  - if window is frontmost and visible then hides it
+- option+click: hides all other windows
 
-### Why: It's difficult to explain it properly, but
+Note: hiding a window currently means moving it "offscreen" because osx has no concept of 'hidden window'. It can minimize them but the minimize-animation is super-slow.
 
-- I use many apps at once and find it hard to keep my desktop tidy and myself focused
-- I am ok with switching tasks frequently as long as it does not take too much effort to make the computer switch with me
-- Spaces, MissionControl, FullScreenApplication usually involve slow animations and cognitive overload
-- Dock and Cmd-Tab are good for a small number of apps
+### next ?
+
+Not sure
+- I would like to simulate groups of hidden/show windows as if they were different spaces you can switch to
+- I would like to create a cmd+tab alternative that is window based (and only shows the windows of the current space)
 
 --
 
 Feel free to try this, make suggestions, submit pull requests.
 
-My next poc will focus on windows and window group management instead of just applications.
