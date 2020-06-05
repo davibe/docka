@@ -8,7 +8,8 @@
 
 import Foundation
 
-// who adopts this protocol is capable of retain any object
+// Who adopts this protocol is capable of retain any object
+// This allows for example to 'bind' any object ref to the lifecycle of a UIView
 
 protocol Retainer: AnyObject {
     var retained: Array<Any> { get set }
