@@ -12,7 +12,8 @@ import Cocoa
 import Silica
 import StreamSwift
 
-class Button: NSButton {
+
+class Button: NSButton, Retainer {
     
     let buttonIndexView:ButtonIndexView = ButtonIndexView()
     var index:Int = 0 {
@@ -20,7 +21,6 @@ class Button: NSButton {
             self.buttonIndexView.setText(text: "\(index)")
         }
     }
-    
     
     convenience init() {
         self.init(frame: .zero)
@@ -32,40 +32,42 @@ class Button: NSButton {
         self.addSubview(self.buttonIndexView)
     }
     
-    // state, dispatch
-    
-    var disposables = Array<Disposable>()
-    let mouseDown = Stream<NSEvent>(memory: false)
-    
-    func bindTo(
-        stream: Stream<AppState>,
-        dispatch: @escaping (_ action: Action) -> Void,
-        win: Win
-    ) {
-        self.image = win.application.icon
-        
-        disposables += [
-            mouseDown,
-            stream.map { $0.hiddenWindowKeys }.distinct({ $0 }).subscribe { hiddenWinKeys in
-                let hidden = hiddenWinKeys.contains(win.key)
-                if hidden {
-                    self.alphaValue = 0.3
-                } else {
-                    self.alphaValue = 1.0
-                }
-            },
-            mouseDown.subscribe(replay: false) { event in
-                let optionKeyDown = NSEvent.modifierFlags.contains(NSEvent.ModifierFlags.option)
-                if optionKeyDown {
-                    dispatch(WinTapSecondary(win: win))
-                } else {
-                    dispatch(WinTap(win: win))
-                }
-            }
-        ]
-    }
-    
+    var mouseDownCb: (_ event: NSEvent) -> Void = { event in }
     override func mouseDown(with event: NSEvent) {
-        mouseDown.trigger(event)
+        mouseDownCb(event)
+    }
+
+}
+
+
+func bindButton(
+    view: Button,
+    stream: Stream<AppState>,
+    dispatch: @escaping (_ action: Action) -> Void,
+    win: Win
+) {
+    view.image = win.application.icon
+    
+    view.retained += [
+        stream
+            .map { $0.hiddenWindowKeys }
+            .distinct { $0 }
+            .map { $0.contains(win.key) }
+            .subscribe(strong: false) { [weak view] hidden in
+                if hidden {
+                    view?.alphaValue = 0.3
+                } else {
+                    view?.alphaValue = 1.0
+                }
+        }
+    ]
+    
+    view.mouseDownCb = { event in
+        let optionKeyDown = NSEvent.modifierFlags.contains(NSEvent.ModifierFlags.option)
+        if optionKeyDown {
+            dispatch(WinTapSecondary(win: win))
+        } else {
+            dispatch(WinTap(win: win))
+        }
     }
 }

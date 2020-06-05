@@ -46,7 +46,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         applicationManager.setup()
         let vc = window.contentViewController as! ViewController
-        vc.bindTo(stream: applicationManager.stateStream, dispatch: applicationManager.dispatch(action:))
+        bindViewController(vc: vc, stream: applicationManager.stateStream, dispatch: applicationManager.dispatch(action:))
+        
     }
     
 }

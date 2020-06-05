@@ -33,14 +33,12 @@ struct Win: Equatable {
     }
 }
 
-
 struct AppState: Equatable {
     var windows: [Win] = []
     var hiddenWindowKeys: [String] = []
     var rectCache: [String: CGRect] = [:]
     var windowLastFocused: SIWindow? = nil
 }
-
 
 protocol Action { }
 
